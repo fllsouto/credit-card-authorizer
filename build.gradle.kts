@@ -9,12 +9,14 @@ version = "0.0.1-SNAPSHOT"
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
+		languageVersion.set(JavaLanguageVersion.of(17))
 	}
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
+    maven ( url = "https://repo.tools.telstra.com/repository/maven-public" )
+    maven ( url = "https://plugins.gradle.org/m2/" )
 }
 
 dependencies {
