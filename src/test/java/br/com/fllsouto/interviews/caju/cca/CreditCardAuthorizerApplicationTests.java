@@ -1,4 +1,4 @@
-package br.com.fllsouto.interviews.caju.creditcard.Authorizer;
+package br.com.fllsouto.interviews.caju.cca;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

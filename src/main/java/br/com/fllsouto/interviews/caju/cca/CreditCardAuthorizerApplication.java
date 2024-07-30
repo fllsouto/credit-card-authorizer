@@ -1,4 +1,4 @@
-package br.com.fllsouto.interviews.caju.creditcard.Authorizer;
+package br.com.fllsouto.interviews.caju.cca;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
