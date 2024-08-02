@@ -14,5 +14,5 @@ public interface AccountRepositoryInMemoryAdapter
 
     Account save(Account account);
     List<Account> findAll();
-    Optional<Account> findByUuid(UUID uuid);
+    Optional<Account> findByUUID(UUID uuid);
 }

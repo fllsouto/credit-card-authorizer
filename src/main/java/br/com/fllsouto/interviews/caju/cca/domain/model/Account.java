@@ -9,10 +9,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-import static br.com.fllsouto.interviews.caju.cca.domain.type.MerchantType.MEAL;
-import static br.com.fllsouto.interviews.caju.cca.domain.type.MerchantType.FOOD;
-import static br.com.fllsouto.interviews.caju.cca.domain.type.MerchantType.CASH;
-
 @Entity
 public class Account {
     

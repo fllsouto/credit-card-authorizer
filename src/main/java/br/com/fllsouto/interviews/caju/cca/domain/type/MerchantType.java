@@ -29,4 +29,8 @@ public enum MerchantType {
         return CASH;
     }
 
+    public static MerchantType getFallbackMerchantType() {
+        return MerchantType.CASH;
+    }
+
 }

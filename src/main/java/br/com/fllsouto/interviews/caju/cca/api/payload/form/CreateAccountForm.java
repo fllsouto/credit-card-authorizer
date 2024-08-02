@@ -1,8 +1,8 @@
-package br.com.fllsouto.interviews.caju.cca.api.payload.input;
+package br.com.fllsouto.interviews.caju.cca.api.payload.form;
 
 import java.math.BigDecimal;
 
-public class CreateAccountInput {
+public class CreateAccountForm {
 
     private BigDecimal foodBalance;
     private BigDecimal mealBalance;

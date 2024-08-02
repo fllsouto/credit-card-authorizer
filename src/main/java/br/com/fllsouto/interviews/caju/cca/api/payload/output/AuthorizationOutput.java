@@ -1,10 +1,12 @@
 package br.com.fllsouto.interviews.caju.cca.api.payload.output;
 
+import br.com.fllsouto.interviews.caju.cca.domain.type.AuthorizationCodeType;
+
 public class AuthorizationOutput {
     private String code;
 
-    public AuthorizationOutput(String code) {
-        this.code = code;
+    public AuthorizationOutput(AuthorizationCodeType code) {
+        this.code = code.getCode();
     }
 
     @Override
@@ -15,5 +17,4 @@ public class AuthorizationOutput {
     public String getCode() {
         return code;
     }
-
 }

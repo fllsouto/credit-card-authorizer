@@ -3,40 +3,25 @@ package br.com.fllsouto.interviews.caju.cca.api.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.fllsouto.interviews.caju.cca.api.payload.input.TransactionInput;
+import br.com.fllsouto.interviews.caju.cca.api.payload.form.TransactionForm;
 import br.com.fllsouto.interviews.caju.cca.api.payload.output.AuthorizationOutput;
-import br.com.fllsouto.interviews.caju.cca.usecase.authorization.SimpleAuthorizationUseCase;
-
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
+import br.com.fllsouto.interviews.caju.cca.service.ports.IAuthorizationService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
-
 @RestController
-@RequestMapping("/authorizer")
+@RequestMapping("/authorization")
 public class AuthorizationController {
 
-    private SimpleAuthorizationUseCase simpleAuthorizationUseCase;
+    private IAuthorizationService authorizationChainService;
 
-    public AuthorizationController(SimpleAuthorizationUseCase simpleAuthorizationUseCase) {
-        this.simpleAuthorizationUseCase = simpleAuthorizationUseCase;
+    public AuthorizationController(IAuthorizationService authorizationChainService) {
+        this.authorizationChainService = authorizationChainService;
     }
 
-    @GetMapping("/health")
-    public String health() {
-        return "up";
+    // TODO: Validate input data
+    @PostMapping
+    public AuthorizationOutput authorize(@RequestBody TransactionForm form) {
+        return this.authorizationChainService.authorize(form);
     }
-
-    @PostMapping("/simple-auth")
-    public AuthorizationOutput simpleAuthorization(@RequestBody TransactionInput input) {
-        //System.out.println(input);
-        AuthorizationOutput output = simpleAuthorizationUseCase.run(input);
-        //System.out.println(output);
-        //return new AuthorizationOutput("42");
-        return output;
-    }
-    
-    
 }

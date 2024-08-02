@@ -1,22 +1,26 @@
-package br.com.fllsouto.interviews.caju.cca.api.payload.input;
+package br.com.fllsouto.interviews.caju.cca.api.payload.form;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public class TransactionInput {
+import com.fasterxml.jackson.annotation.JsonAlias;
+
+public class TransactionForm {
     
-    private UUID id;
-    private UUID accountId;
+    @JsonAlias("id")
+    private UUID transactionUUID;
+    @JsonAlias("accountId")
+    private UUID accountUUID;
     private BigDecimal totalAmount;
     private String mcc;
     private String merchant;
 
-    public UUID getId() {
-        return id;
+    public UUID gettransactionUUID() {
+        return transactionUUID;
     }
     
-    public UUID getAccountId() {
-        return accountId;
+    public UUID getAccountUUID() {
+        return accountUUID;
     }
     
     public BigDecimal getTotalAmount() {
