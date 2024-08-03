@@ -22,7 +22,7 @@ public class ValidateAuthorizationUCImpl implements IAuthorizationUC{
     // TODO: Refactor this after testing!
     @Override
     public void run(AuthorizationUCInput input, AuthorizationUCOutput output) {
-        Optional<Account> optAcc = accountRepository.findByUUID(input.getAccountId());
+        Optional<Account> optAcc = accountRepository.findByUUID(input.getAccountUUID());
         if (optAcc.isEmpty()) {
             output.setNewCode(AuthorizationCodeType.DENIED_INTERNAL_ERROR);
         } else {

@@ -18,5 +18,8 @@ public class GetAccountUCImpl implements IAccountUC {
     public void run(AccountUCInput input, AccountUCOutput output) {
         Optional<Account> account = accountRepository.findByUUID(input.getUUID());
         output.setAcc(account);
+
+        if (account.isPresent())
+            output.update();
     }
 }

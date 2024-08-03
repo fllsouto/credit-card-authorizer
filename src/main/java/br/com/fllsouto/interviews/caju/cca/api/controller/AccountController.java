@@ -3,7 +3,6 @@ package br.com.fllsouto.interviews.caju.cca.api.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fllsouto.interviews.caju.cca.api.payload.form.CreateAccountForm;
-import br.com.fllsouto.interviews.caju.cca.api.payload.form.CreateAccountInput;
 import br.com.fllsouto.interviews.caju.cca.api.payload.output.AccountOutput;
 import br.com.fllsouto.interviews.caju.cca.service.ports.IAccountService;
 import java.util.List;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class AccountController {
 
     private IAccountService accountService;
+
     public AccountController(IAccountService accountService) {
         this.accountService = accountService;
     }

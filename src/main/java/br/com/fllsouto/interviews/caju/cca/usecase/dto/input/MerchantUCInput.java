@@ -1,6 +1,8 @@
 package br.com.fllsouto.interviews.caju.cca.usecase.dto.input;
 
 import java.util.UUID;
+
+import br.com.fllsouto.interviews.caju.cca.api.payload.form.CreateMerchantForm;
 import br.com.fllsouto.interviews.caju.cca.domain.type.MerchantType;
 
 public class MerchantUCInput {
@@ -9,11 +11,17 @@ public class MerchantUCInput {
     private MerchantType preferedType;
     private MerchantType fallbackType;
 
-    public MerchantUCInput(UUID uuid, String name, MerchantType preferedType) {
-        this.uuid = uuid;
-        this.name = name;
-        this.preferedType = preferedType;
+    public MerchantUCInput() {}
+
+    public MerchantUCInput(CreateMerchantForm form) {
+        this.uuid = form.getUUID();
+        this.name = form.getName();
+        this.preferedType = MerchantType.getTypeFrom(form.getPreferedType());
         this.fallbackType = MerchantType.getFallbackMerchantType();
+    }
+
+    public MerchantUCInput(UUID uuid) {
+        this.uuid = uuid;
     }
 
     public UUID getUUID() {

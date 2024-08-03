@@ -5,6 +5,7 @@ import java.util.UUID;
 import java.util.List;
 import java.util.Optional;
 
+import br.com.fllsouto.interviews.caju.cca.api.payload.output.AccountOutput;
 import br.com.fllsouto.interviews.caju.cca.domain.model.Account;
 
 public class AccountUCOutput {
@@ -14,6 +15,8 @@ public class AccountUCOutput {
     private BigDecimal cashBalance;
     Optional<Account> optAcc;
     List<Account> accs;
+
+    public AccountUCOutput(){}
 
     public AccountUCOutput(UUID uuid, BigDecimal foodBalance, BigDecimal mealBalance, BigDecimal cashBalance) {
         this.uuid = uuid;
@@ -45,6 +48,10 @@ public class AccountUCOutput {
         this.cashBalance = acc.getCashBalance();
     }
 
+    public void update() {
+        update(optAcc.get());
+    }
+
     public Account getAcc() {
         return optAcc.get();
     }
@@ -59,5 +66,22 @@ public class AccountUCOutput {
 
     public void setAcc(List<Account> accs) {
         this.accs = accs;
+    }
+
+    public AccountOutput mapToOutput() {
+        return buildOutput(this.getAcc());
+    }
+
+    public List<AccountOutput> mapToOutputList() {
+        return this.accs.stream().map(this::buildOutput).toList();
+    }
+
+    private AccountOutput buildOutput(Account acc) {
+        return new AccountOutput(
+            acc.getUUID(), 
+            acc.getFoodBalance(), 
+            acc.getMealBalance(), 
+            acc.getFoodBalance()
+        );
     }
 }

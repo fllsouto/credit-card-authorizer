@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class CreateAccountForm {
 
+    //TODO: Validate with Bean Validator
     private BigDecimal foodBalance;
     private BigDecimal mealBalance;
     private BigDecimal cashBalance;
@@ -16,5 +17,11 @@ public class CreateAccountForm {
     }
     public BigDecimal getCashBalance() {
         return cashBalance;
+    }
+
+    @Override
+    public String toString() {
+        return "CreateAccountForm [foodBalance=" + foodBalance + ", mealBalance=" + mealBalance + ", cashBalance="
+                + cashBalance + "]";
     }
 }

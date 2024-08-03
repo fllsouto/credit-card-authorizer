@@ -4,6 +4,7 @@ import java.util.UUID;
 
 public class CreateMerchantForm {
 
+    //TODO: Validate with Bean Validator
     private UUID uuid;
     private String name;
     private String preferedType;
@@ -17,6 +18,8 @@ public class CreateMerchantForm {
         return preferedType;
     }
 
-    
-
+    @Override
+    public String toString() {
+        return "CreateMerchantForm [uuid=" + uuid + ", name=" + name + ", preferedType=" + preferedType + "]";
+    }
 }

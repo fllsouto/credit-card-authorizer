@@ -9,12 +9,13 @@ public class AuthorizationOutput {
         this.code = code.getCode();
     }
 
+    
+    public String getCode() {
+        return code;
+    }
+
     @Override
     public String toString() {
         return "AuthorizationOutput [code=" + code + "]";
-    }
-
-    public String getCode() {
-        return code;
     }
 }

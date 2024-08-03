@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 
 public class TransactionForm {
     
+    //TODO: Validate with Bean Validator
     @JsonAlias("id")
     private UUID transactionUUID;
     @JsonAlias("accountId")
@@ -15,7 +16,7 @@ public class TransactionForm {
     private String mcc;
     private String merchant;
 
-    public UUID gettransactionUUID() {
+    public UUID getTransactionUUID() {
         return transactionUUID;
     }
     
@@ -37,8 +38,7 @@ public class TransactionForm {
 
     @Override
     public String toString() {
-        return "TransactionInput [id=" + id + ", accountId=" + accountId + ", totalAmount=" + totalAmount + ", mcc="
-                + mcc + ", merchant=" + merchant + "]";
+        return "TransactionForm [transactionUUID=" + transactionUUID + ", accountUUID=" + accountUUID + ", totalAmount="
+                + totalAmount + ", mcc=" + mcc + ", merchant=" + merchant + "]";
     }
-
 }

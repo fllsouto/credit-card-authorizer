@@ -31,7 +31,7 @@ public class MerchantController {
     }
 
     @GetMapping("/{merchantUUID}")
-    public Optional<MerchantOutput> getMerchantById(@PathVariable UUID uuid) {
+    public MerchantOutput getMerchantById(@PathVariable UUID uuid) {
         return this.merchantService.get(uuid);
     }
 

@@ -6,26 +6,26 @@ import java.util.UUID;
 import br.com.fllsouto.interviews.caju.cca.api.payload.form.TransactionForm;
 
 public class AuthorizationUCInput {
-    private UUID id;
-    private UUID accountId;
+    private UUID transactionUUID;
+    private UUID accountUUID;
     private BigDecimal totalAmount;
     private String mcc;
     private String merchant;
 
-    private AuthorizationUCInput(UUID id, UUID accountId, BigDecimal totalAmount, String mcc, String merchant) {
-        this.id = id;
-        this.accountId = accountId;
+    private AuthorizationUCInput(UUID transactionUUID, UUID accountUUID, BigDecimal totalAmount, String mcc, String merchant) {
+        this.transactionUUID = transactionUUID;
+        this.accountUUID = accountUUID;
         this.totalAmount = totalAmount;
         this.mcc = mcc;
         this.merchant = merchant;
     }
 
-    public UUID getId() {
-        return id;
+    public UUID getTransactionUUID() {
+        return transactionUUID;
     }
     
-    public UUID getAccountId() {
-        return accountId;
+    public UUID getAccountUUID() {
+        return accountUUID;
     }
     
     public BigDecimal getTotalAmount() {
@@ -42,8 +42,8 @@ public class AuthorizationUCInput {
 
     public static AuthorizationUCInput buildFrom(TransactionForm form) {
         return new AuthorizationUCInput(
-            form.getId(),
-            form.getAccountId(),
+            form.getTransactionUUID(),
+            form.getAccountUUID(),
             form.getTotalAmount(),
             form.getMcc(),
             form.getMerchant()

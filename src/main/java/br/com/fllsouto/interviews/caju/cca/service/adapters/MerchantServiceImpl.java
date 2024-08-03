@@ -2,14 +2,14 @@ package br.com.fllsouto.interviews.caju.cca.service.adapters;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.Optional;
-
 import org.springframework.stereotype.Service;
 
 import br.com.fllsouto.interviews.caju.cca.api.payload.form.CreateMerchantForm;
 import br.com.fllsouto.interviews.caju.cca.api.payload.output.MerchantOutput;
 import br.com.fllsouto.interviews.caju.cca.domain.repository.MerchantRepository;
 import br.com.fllsouto.interviews.caju.cca.service.ports.IMerchantService;
+import br.com.fllsouto.interviews.caju.cca.usecase.dto.input.MerchantUCInput;
+import br.com.fllsouto.interviews.caju.cca.usecase.dto.output.MerchantUCOutput;
 import br.com.fllsouto.interviews.caju.cca.usecase.merchant.CreateMerchantUCImpl;
 import br.com.fllsouto.interviews.caju.cca.usecase.merchant.GetMerchantUCImpl;
 import br.com.fllsouto.interviews.caju.cca.usecase.merchant.IMerchantUC;
@@ -28,22 +28,31 @@ public class MerchantServiceImpl implements IMerchantService {
         this.listMerchantUC = new ListMerchantUCImpl(repository);
     }
 
-    //TODO: FIX THIS
     @Override
     public MerchantOutput create(CreateMerchantForm form) {
-        this.createMerchantUC.run(null, null);
+        MerchantUCInput input = new MerchantUCInput(form);
+        MerchantUCOutput output = new MerchantUCOutput(); 
+
+        this.createMerchantUC.run(input, output);
+        return output.mapToOutput();
     }
     
-    //TODO: FIX THIS
     @Override
-    public Optional<MerchantOutput> get(UUID uuid) {
-        this.getMerchantUC.run(null, null);
+    public MerchantOutput get(UUID merchantUUID) {
+        MerchantUCInput input = new MerchantUCInput(merchantUUID);
+        MerchantUCOutput output = new MerchantUCOutput();
+
+        this.getMerchantUC.run(input, output);
+        return output.mapToOutput();
     }
     
-    //TODO: FIX THIS
     @Override
     public List<MerchantOutput> list() {
-        this.listMerchantUC.run(null, null);
+        MerchantUCInput input = new MerchantUCInput();
+        MerchantUCOutput output = new MerchantUCOutput();
+
+        this.listMerchantUC.run(input, output);
+        return output.mapToOutputList();    
     }
     
 }
